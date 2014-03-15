@@ -3,3 +3,9 @@
     <li><%= link_to check.account.username, account_path(check.account) %> <%= check.created_at.stamp("9:00am on March 23") %></li>
   <% end %>
 </ul>
+
+<hr>
+
+<%= link_to "Track a new account",
+            new_account_path,
+            :class => 'btn btn-primary' %>
