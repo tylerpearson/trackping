@@ -39,7 +39,7 @@ class Account < ActiveRecord::Base
   end
 
   def profile
-    Profile.where(twitter_id: twitter_id).first
+    Profile.where(twitter_id: twitter_id.to_s).first
   end
 
   def current_following
