@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "TwitterTracker" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "heck.io" %></title>
     <%= csrf_meta_tags %>
 
     <!--[if lt IE 9]>
@@ -13,46 +13,34 @@
 
     <%= stylesheet_link_tag "application", :media => "all" %>
     <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
-
-    <%= javascript_include_tag "application" %>
   </head>
   <body>
 
-    <div class="navbar navbar-fluid-top">
-      <div class="navbar-inner">
-        <div class="container-fluid">
-          <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <%= link_to "TwitterTracker", root_path, class: "brand" %>
-          <div class="container-fluid nav-collapse">
-            <ul class="nav">
-              <% unless user_signed_in? %>
-              <li><%= link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter) %></li>
-              <% else %>
-              <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %> </li>
-              <% end %>
-            </ul>
-          </div><!--/.nav-collapse -->
-        </div>
-      </div>
-    </div>
+      <div class="container">
 
-    <div class="container-fluid">
-      <div class="row-fluid">
-        <div class="span12">
-          <%= bootstrap_flash %>
-          <%= yield %>
-        </div>
-      </div><!--/row-->
+          <header class="header">
+              <%= link_to "heck.io", root_path, class: "brand" %>
 
-      <footer>
+              <ul class="nav">
+                <% unless user_signed_in? %>
+                <li><%= link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter), class: 'btn btn-outline'  %></li>
+                <% else %>
+                <li><%= link_to 'Logout', destroy_user_session_path, :method => :delete %> </li>
+                <% end %>
+              </ul>
+          </header>
 
-      </footer>
+          <div class="main">
+              <%= bootstrap_flash %>
+              <%= yield %>
+          </div>
+
+          <footer class="footer">
+              <p>&copy; heck.io</p>
+          </footer>
 
     </div> <!-- /container -->
 
+  <%= javascript_include_tag "application" %>
   </body>
 </html>

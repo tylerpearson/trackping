@@ -1,0 +1,132 @@
+*, *:before, *:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: @dark;
+    color: #fff;
+    .sans;
+    line-height: 1.5;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    color: @light;
+    text-decoration: none;
+    &:hover {
+        color: lighten(@light, 10%)
+    }
+}
+
+hr {
+    height: 4px;
+    border-radius: 2px;
+    width: 80%;
+    margin: 30px auto;
+    border: 0;
+    background-color: #fff;
+}
+
+.btn {
+    font-weight: bold;
+    &.btn-outline {
+        border: solid 2px @light;
+        display: inline-block;
+        padding: 7px 15px;
+        border-radius: 5px;
+        background-color: transparent;
+    }
+}
+
+.avatar {
+    border-radius: 3px;
+}
+
+.container {
+    width: 96%;
+    margin: 0 auto;
+    max-width: 700px;
+}
+
+.alert {
+    background: lighten(@dark,30%);
+    padding: 10px;
+    margin-bottom: 30px;
+    border-radius: 3px;
+}
+
+.close {
+    color: #fff;
+    background-color: transparent;
+    border: 0;
+    margin-right: 5px;
+    font-size: 18px;
+}
+
+.header {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    overflow: auto;
+}
+
+    .brand {
+        font-size: 22px;
+        font-weight: bold;
+        text-decoration: none;
+        float: left;
+    }
+
+    .nav {
+        float: right;
+        list-style: none;
+        margin: 0;
+        li {
+
+            a {
+                font-size: 13px;
+                font-weight: bold;
+                text-decoration: none;
+                text-transform: uppercase;
+            }
+        }
+    }
+
+.page-header {
+    margin-bottom: 30px;
+}
+
+.media {
+    clear: both;
+    margin-bottom: 35px;
+    width: 49%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+    .media-image {
+        float: left;
+        margin-right: 20px;
+    }
+
+    .media-content {
+        color: #fff;
+        h3 {
+            margin: 0;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        h4 {
+            font-size: 14px;
+            margin: 0;
+            font-weight: normal;
+        }
+    }
+
+.footer {
+    margin-top: 60px;
+    text-align: center;
+    font-size: 14px;
+}
