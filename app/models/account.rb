@@ -12,6 +12,9 @@
 
 class Account < ActiveRecord::Base
 
+  extend FriendlyId
+  friendly_id :slug_candidates, use: [:slugged, :finders]
+
   belongs_to :user
   has_many :checks, dependent: :destroy
 
@@ -25,6 +28,7 @@ class Account < ActiveRecord::Base
   validate :twitter_user_exists
 
   after_create :set_twitter_id, :do_first_check, :create_profile
+
 
   def to_s
     username
@@ -81,5 +85,12 @@ class Account < ActiveRecord::Base
         avatar_url: account.profile_image_url.to_s,
         name: account.name}).first_or_create
     end
+
+    def slug_candidates
+        [
+          :username,
+          [:username, :id]
+        ]
+      end
 
 end
