@@ -3,7 +3,6 @@ namespace :check do
   desc "Check all Twitter accounts"
   task :accounts => :environment do
     Account.find_each do |account|
-      puts "checking #{account.username}"
       last_check = account.checks.last
 
       followers = account.current_followers

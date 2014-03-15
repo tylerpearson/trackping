@@ -9,11 +9,11 @@
   <dd><%= @account.username %></dd>
 </dl>
 
-<p>There have been <%= @checks.size %> checks.</p>
+<p>There have been <%= @checks.count %> checks.</p>
 
 <ul>
 <% @checks.each do |check| %>
-  <li><%= check.created_at %>:
+  <li><%= check.created_at.stamp("July 20 at 9:21pm") %>:
     <br>Followers gained: <%= check.followers_added.join(', ') unless check.followers_added.nil?  %>
     <br>Followers lost: <%= check.followers_removed.join(', ') unless check.followers_removed.nil?  %>
     <br>Accounts followed: <%= check.following_added.join(', ') unless check.following_added.nil?  %><br>
