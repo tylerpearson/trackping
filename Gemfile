@@ -56,6 +56,9 @@ gem 'quiet_assets', :group => :development
 
 gem 'annotate', ">=2.6.0"
 
+# For easier formatting of dates
+gem 'stamp'
+
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0.beta'

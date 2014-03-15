@@ -36,12 +36,12 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   has_many :accounts, dependent: :destroy
+  has_many :checks, through: :accounts
 
 
   def to_s
     username
   end
-
 
   def client
     Twitter::REST::Client.new do |config|
@@ -89,4 +89,11 @@ class User < ActiveRecord::Base
       super
     end
   end
+
+  def recent_changed_checks
+    checks.where("followers_added != ? OR followers_removed != ? OR following_added != ? OR following_removed != ?", "[]", "[]", "[]", "[]").limit(20).order(created_at: :desc)
+  end
+
+
+
 end

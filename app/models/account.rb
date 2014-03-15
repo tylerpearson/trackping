@@ -18,6 +18,8 @@ class Account < ActiveRecord::Base
   validates :username, presence: true, uniqueness: { scope: :user,
     message: "should happen once per user", case_sensitive: false }
 
+  validates :user, presence: true
+
   validates_length_of :username, :minimum => 1, :maximum => 16, :allow_blank => false
 
   validate :twitter_user_exists
@@ -38,14 +40,14 @@ class Account < ActiveRecord::Base
 
   def current_following
     results = []
-    ids = client.friend_ids(@id)
+    ids = client.friend_ids(username)
     ids.each { |id| results << id }
     results
   end
 
   def current_followers
     results = []
-    ids = client.follower_ids(@id)
+    ids = client.follower_ids(username)
     ids.each { |id| results << id }
     results
   end

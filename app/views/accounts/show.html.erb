@@ -9,6 +9,8 @@
   <dd><%= @account.username %></dd>
 </dl>
 
+<p>There have been <%= @checks.size %> checks.</p>
+
 <ul>
 <% @checks.each do |check| %>
   <li><%= check.created_at %>:
@@ -18,7 +20,7 @@
 
     Accounts unfollowed: <% if !check.following_removed.nil? %>
         <% check.following_removed.each do |account|  %>
-          <%= profile(account).name %>
+          <%= account %>
         <% end %>
     <% end %>
   </li>

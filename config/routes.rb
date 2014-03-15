@@ -1,12 +1,13 @@
 TwitterTracker::Application.routes.draw do
 
-  resources :accounts
 
   authenticated :user do
-    get '/', to: redirect('/accounts')
+    root :to => "dashboard#index", as: :dashboard
   end
 
   root :to => "home#index"
+
+  resources :accounts
 
   devise_for :users, path_names: {sign_in: "login", sign_out: "logout"},
                    controllers: {omniauth_callbacks: "omniauth_callbacks"}

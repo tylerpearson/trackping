@@ -2,7 +2,7 @@ namespace :check do
 
   desc "Check all Twitter accounts"
   task :accounts => :environment do
-    Account.all.each_with_index do |account, index|
+    Account.find_each do |account|
       puts "checking #{account.username}"
       last_check = account.checks.last
 
@@ -41,7 +41,7 @@ namespace :check do
 
       end
 
-      sleep 10 if index != Account.count - 1
+      sleep 10
     end
   end
 

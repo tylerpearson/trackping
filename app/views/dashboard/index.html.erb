@@ -1,0 +1,5 @@
+<ul>
+  <% @checks.each do |check| %>
+    <li><%= link_to check.account.username, account_path(check.account) %> <%= check.created_at.stamp("March 23") %></li>
+  <% end %>
+</ul>
