@@ -497,6 +497,18 @@ hr {
 .media.media-full .media-content h3 {
   margin-bottom: 7px;
 }
+@media (max-width: 500px) {
+  .media.media-full .media-content {
+    width: 89%;
+  }
+  .media.media-full .media-image {
+    width: 11%;
+  }
+  .media-image img {
+    max-width: 30px;
+    max-height: 30px;
+  }
+}
 .media-image {
   float: left;
   margin-right: 20px;
@@ -585,7 +597,7 @@ hr {
 }
 .footer-nav li {
   display: inline-block;
-  margin: 0 15px;
+  margin: 0 15px 5px 15px;
 }
 .home {
   text-align: center;
