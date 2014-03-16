@@ -69,6 +69,8 @@ gem 'stamp'
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0.beta'
   gem 'sqlite3'
+  gem 'shoulda-matchers'
+  gem 'factory_girl'
 end
 
 gem "therubyracer"

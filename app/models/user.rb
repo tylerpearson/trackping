@@ -38,6 +38,8 @@ class User < ActiveRecord::Base
   has_many :accounts, dependent: :destroy
   has_many :checks, through: :accounts
 
+  validates_presence_of :username, :uid, :twitter_oauth_token, :twitter_oauth_secret, :provider
+
 
   def to_s
     username

@@ -15,5 +15,6 @@
 require 'spec_helper'
 
 describe Profile do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { should validate_presence_of(:username) }
+  it { should validate_presence_of(:twitter_id) }
 end

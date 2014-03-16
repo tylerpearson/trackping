@@ -53,6 +53,8 @@ GEM
     erubis (2.7.0)
     eventmachine (1.0.3)
     execjs (2.0.2)
+    factory_girl (4.4.0)
+      activesupport (>= 3.0.0)
     faraday (0.9.0)
       multipart-post (>= 1.2, < 3)
     figaro (0.7.0)
@@ -145,6 +147,8 @@ GEM
     sdoc (0.4.0)
       json (~> 1.8)
       rdoc (~> 4.0, < 5.0)
+    shoulda-matchers (2.5.0)
+      activesupport (>= 3.0.0)
     simple_oauth (0.2.0)
     sprockets (2.11.0)
       hike (~> 1.2)
@@ -201,6 +205,7 @@ DEPENDENCIES
   cancan
   coffee-rails (~> 4.0.0)
   devise
+  factory_girl
   figaro
   friendly_id (~> 5.0.0)
   high_voltage (~> 2.1.0)
@@ -213,6 +218,7 @@ DEPENDENCIES
   rails (= 4.0.4)
   rspec-rails (~> 3.0.0.beta)
   sdoc
+  shoulda-matchers
   sqlite3
   stamp
   therubyracer

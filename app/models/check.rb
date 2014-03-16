@@ -24,6 +24,8 @@ class Check < ActiveRecord::Base
   serialize :following_removed
 
   validates :account, presence: true
+  validates :followers, presence: true
+  validates :following, presence: true
 
   belongs_to :account
 

@@ -13,4 +13,6 @@
 #
 
 class Profile < ActiveRecord::Base
+  validates_presence_of :twitter_id
+  validates_presence_of :username
 end

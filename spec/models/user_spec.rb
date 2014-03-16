@@ -30,5 +30,10 @@
 require 'spec_helper'
 
 describe User do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { should have_many(:accounts) }
+  it { should validate_presence_of(:twitter_oauth_token) }
+  it { should validate_presence_of(:twitter_oauth_secret) }
+  it { should validate_presence_of(:username) }
+  it { should validate_presence_of(:uid) }
+  it { should validate_presence_of(:provider) }
 end
