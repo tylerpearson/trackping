@@ -25,6 +25,7 @@ class Account < ActiveRecord::Base
   validates_length_of :username, :minimum => 1, :maximum => 16, :allow_blank => false
   validate :twitter_user_exists, :under_max_accounts
 
+  before_create :remove_at_sign
   after_create :set_twitter_id, :do_first_check, :create_profile
 
 
@@ -82,6 +83,10 @@ class Account < ActiveRecord::Base
     def set_twitter_id
       self.twitter_id = client.user(username).id.to_s
       self.save
+    end
+
+    def remove_at_sign
+      self.username = username.sub('@','')
     end
 
     def create_profile
