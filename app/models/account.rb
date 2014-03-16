@@ -84,7 +84,7 @@ class Account < ActiveRecord::Base
       account = client.users(username).first
 
       Profile.where({
-        twitter_id: account.id,
+        twitter_id: account.id.to_s,
         username: account.screen_name,
         description: account.description,
         avatar_url: account.profile_image_url.to_s,
