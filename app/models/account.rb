@@ -43,16 +43,30 @@ class Account < ActiveRecord::Base
 
   def current_following
     results = []
-    ids = client.friend_ids(username)
+    ids = client.friend_ids(:following)
     ids.each { |id| results << id }
     results
   end
 
   def current_followers
     results = []
-    ids = client.follower_ids(username)
+    ids = get_twitter_results(:followers)
     ids.each { |id| results << id }
     results
+  end
+
+  def get_twitter_results(type)
+    if type == :following
+      ids = client.friend_ids(username)
+    elsif type == :followers
+      ids = client.follower_ids(username)
+    end
+    begin
+      ids.to_a
+    rescue Twitter::Error::TooManyRequests => error
+      return ids.to_a
+    end
+    ids
   end
 
   def recent_changed_checks
