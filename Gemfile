@@ -7,7 +7,6 @@ gem 'rails', '4.0.4'
 
 # Use sqlite3 as the database for Active Record
 gem 'pg'
-gem 'rails_12factor'
 
 # Use SCSS for stylesheets
 # gem 'sass-rails', '~> 4.0.2'
@@ -55,6 +54,7 @@ gem "figaro"
 gem "twitter", '5.0.0.rc.1'
 gem 'friendly_id', '~> 5.0.0'
 gem 'will_paginate', '~> 3.0'
+gem 'high_voltage', '~> 2.1.0'
 
 gem 'thin'
 

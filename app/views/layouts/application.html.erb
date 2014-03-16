@@ -24,10 +24,8 @@
               <%= link_to "trackping", root_path, class: "brand" %>
 
               <ul class="nav">
-                <% unless user_signed_in? %>
-                <li><%= link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter), class: 'btn btn-outline'  %></li>
-                <% else %>
-                <li><%= link_to 'Logout', destroy_user_session_path, :method => :delete %> </li>
+                <% if user_signed_in? %>
+                    <li><%= link_to 'Logout', destroy_user_session_path, :method => :delete %> </li>
                 <% end %>
               </ul>
           </header>
@@ -38,7 +36,12 @@
           </div>
 
           <footer class="footer">
-              <p>&copy; trackping</p>
+              <ul class="footer-nav">
+                  <li><%= link_to "About", page_path('about') %></li>
+                  <li><%= link_to "FAQs", page_path('faqs') %></li>
+                  <li><%= link_to "Contact", page_path('contact') %></li>
+                  <li>&copy; <%= Time.now.year %> trackping</li>
+              </ul>
           </footer>
 
     </div> <!-- /container -->

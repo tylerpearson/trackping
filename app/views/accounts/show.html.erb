@@ -5,7 +5,6 @@
     <h1><%= @account.profile.name %> (@<%= @account %>)</h1>
 </div>
 
-<hr>
 
 <h3>Changes</h3>
 
@@ -99,11 +98,10 @@
     <%= will_paginate @checks, :page_links => false %>
 </div>
 
-<hr>
 
 <div class="form-actions">
   <%= link_to "stop tracking", account_path(@account),
               :method => 'delete',
-              :data => { :confirm =>  'Are you sure?' },
+              :data => { :confirm =>  'Are you sure you want to delete this account?' },
               :class => 'btn btn-danger' %>
 </div>
