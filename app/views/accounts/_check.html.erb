@@ -1,18 +1,18 @@
-    <div class="media media-full">
+<div class="media media-full">
 
-        <div class="media-image">
-            <img class="avatar" src="<%= hq_avatar(check.account.profile.avatar_url) %>" alt="<%= check.account.profile.name %> avatar" width="48" height="48">
-        </div>
-
-        <div class="media-content">
-            <h3><a href="<%= account_path(check.account) %>"><%= check.account.profile.name %></a> <span><%= check.created_at.stamp('at 8:21pm on March 21') %></span></h3>
-
-            <div class="media-content-details">
-                <%= render partial: "accounts/accounts_list", locals: {accounts: check.followers_added, title: "New followers"} %>
-                <%= render partial: "accounts/accounts_list", locals: {accounts: check.followers_removed, title: "Lost followers"} %>
-                <%= render partial: "accounts/accounts_list", locals: {accounts: check.following_added, title: "Followed"} %>
-                <%= render partial: "accounts/accounts_list", locals: {accounts: check.following_removed, title: "Unfollowed"} %>
-            </div>
-        </div>
-
+    <div class="media-image">
+        <img class="avatar" src="<%= hq_avatar(check.account.profile.avatar_url) %>" alt="<%= check.account.profile.name %> avatar" width="48" height="48">
     </div>
+
+    <div class="media-content">
+        <h3><a href="<%= account_path(check.account) %>"><%= check.account.profile.name %></a> <span><%= check.created_at.stamp('at 8:21pm on March 21') %></span></h3>
+
+        <div class="media-content-details">
+            <%= render partial: "accounts/accounts_list", locals: {accounts: check.followers_added, title: "New followers"} %>
+            <%= render partial: "accounts/accounts_list", locals: {accounts: check.followers_removed, title: "Lost followers"} %>
+            <%= render partial: "accounts/accounts_list", locals: {accounts: check.following_added, title: "Followed"} %>
+            <%= render partial: "accounts/accounts_list", locals: {accounts: check.following_removed, title: "Unfollowed"} %>
+        </div>
+    </div>
+
+</div>

@@ -21,12 +21,9 @@ class Account < ActiveRecord::Base
 
   validates :username, presence: true, uniqueness: { scope: :user,
     message: "should happen once per user", case_sensitive: false }
-
   validates :user, presence: true
-
   validates_length_of :username, :minimum => 1, :maximum => 16, :allow_blank => false
-
-  validate :twitter_user_exists
+  validate :twitter_user_exists, :under_max_accounts
 
   after_create :set_twitter_id, :do_first_check, :create_profile
 
@@ -72,6 +69,13 @@ class Account < ActiveRecord::Base
         user.client.user(username)
       rescue
         errors.add(:base, 'Must be an existing Twitter account')
+      end
+    end
+
+    def under_max_accounts
+      accounts_count = user.accounts.count
+      if accounts_count >= 15
+        errors.add(:base, 'Only 15 accounts can be tracked at this time')
       end
     end
 
