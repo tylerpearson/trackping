@@ -40,7 +40,7 @@ namespace :check do
 
       end
 
-      sleep 10
+      sleep 1
     end
   end
 

@@ -56,6 +56,10 @@ class Account < ActiveRecord::Base
     results
   end
 
+  def recent_changed_checks
+    checks.where("followers_added != ? OR followers_removed != ? OR following_added != ? OR following_removed != ?", "--- []\n", "--- []\n", "--- []\n", "--- []\n").order(created_at: :desc)
+  end
+
   private
 
     def do_first_check
@@ -87,10 +91,10 @@ class Account < ActiveRecord::Base
     end
 
     def slug_candidates
-        [
-          :username,
-          [:username, :id]
-        ]
-      end
+      [
+        :username,
+        [:username, :id]
+      ]
+    end
 
 end

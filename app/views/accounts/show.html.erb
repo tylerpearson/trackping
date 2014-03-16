@@ -1,38 +1,103 @@
-<%- model_class = Account -%>
+<% provide(:title, "Tracking #{@account.profile.name}" ) %>
+
 <div class="page-header">
-  <h1><%= @account.profile.name %> (@<%= @account %>)</h1>
-  <img src="<%= @account.profile.avatar_url %>" width="60" height="60">
+    <img class="avatar media-image" src="<%= @account.profile.avatar_url %>" width="60" height="60">
+    <h1><%= @account.profile.name %> (@<%= @account %>)</h1>
 </div>
 
-<dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:username) %>:</strong></dt>
-  <dd><%= @account.username %></dd>
-</dl>
+<hr>
 
-<p>There have been <%= @checks.count %> checks.</p>
+<h3>Changes</h3>
 
-<ul>
 <% @checks.each do |check| %>
-  <li><%= check.created_at.stamp("July 20 at 9:21pm") %>:
-    <br>Followers gained: <%= check.followers_added.join(', ') unless check.followers_added.nil?  %>
-    <br>Followers lost: <%= check.followers_removed.join(', ') unless check.followers_removed.nil?  %>
-    <br>Accounts followed: <%= check.following_added.join(', ') unless check.following_added.nil?  %><br>
+    <div class="media media-full">
 
-    Accounts unfollowed: <% if !check.following_removed.nil? %>
-        <% check.following_removed.each do |account|  %>
-          <%= account %>
-        <% end %>
-    <% end %>
-  </li>
+        <div class="media-image">
+            <img class="avatar" src="<%= check.account.profile.avatar_url %>" alt="<%= check.account.profile.name %> avatar" width="48" height="48">
+        </div>
+
+        <div class="media-content">
+            <h3><a href="<%= account_path(check.account) %>"><%= check.account.profile.name %></a> <span><%= check.created_at.stamp('at 8:21pm on March 21') %></span></h3>
+
+            <div class="media-content-details">
+                <% if check.followers_added.length > 0 %>
+                    <h4>New followers:</h4>
+                    <ul class="accounts-list">
+                    <% check.followers_added.each do |account_id|  %>
+                        <li>
+                            <img src="<%= account_info(account_id).avatar_url %>"
+                                class="avatar"
+                                width="20"
+                                height="20"
+                                alt="<%= account_info(account_id).username %>">
+                                <%= link_to account_info(account_id).username, "http://twitter.com/#{account_info(account_id).username}", target: "_blank" %>
+                        </li>
+                    <% end %>
+                    </ul>
+                <% end %>
+
+                <% if check.followers_removed.length > 0 %>
+                    <h4>Lost followers:</h4>
+                    <ul class="accounts-list">
+                    <% check.followers_removed.each do |account_id|  %>
+                        <li>
+                            <img src="<%= account_info(account_id).avatar_url %>"
+                                class="avatar"
+                                width="20"
+                                height="20"
+                                alt="<%= account_info(account_id).username %>">
+                                <%= link_to account_info(account_id).username, "http://twitter.com/#{account_info(account_id).username}", target: "_blank" %>
+                        </li>
+                    <% end %>
+                    </ul>
+                <% end %>
+
+                <% if check.following_added.length > 0 %>
+                    <h4>Followed:</h4>
+                    <ul class="accounts-list">
+                    <% check.following_added.each do |account_id|  %>
+                        <li>
+                            <img src="<%= account_info(account_id).avatar_url %>"
+                                class="avatar"
+                                width="20"
+                                height="20"
+                                alt="<%= account_info(account_id).username %>">
+                                <%= link_to account_info(account_id).username, "http://twitter.com/#{account_info(account_id).username}", target: "_blank" %>
+                        </li>
+                    <% end %>
+                    </ul>
+                <% end %>
+
+                <% if check.following_removed.length > 0 %>
+                    <h4>Unfollowed:</h4>
+                    <ul class="accounts-list">
+                    <% check.following_removed.each do |account_id|  %>
+                        <li>
+                            <img src="<%= account_info(account_id).avatar_url %>"
+                                class="avatar"
+                                width="20"
+                                height="20"
+                                alt="<%= account_info(account_id).username %>">
+                                <%= link_to account_info(account_id).username, "http://twitter.com/#{account_info(account_id).username}", target: "_blank" %>
+                        </li>
+                    <% end %>
+                    </ul>
+                <% end %>
+            </div>
+        </div>
+
+    </div>
 <% end %>
-</ul>
+
+<div class="pagination">
+    <%= will_paginate @checks, :page_links => false %>
+</div>
+
+<hr>
 
 <div class="form-actions">
-  <%= link_to t('.back', :default => t("helpers.links.back")),
-              accounts_path, :class => 'btn'  %>
-  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              account_path(@account),
+  <%= link_to "stop tracking", account_path(@account),
               :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :data => { :confirm =>  'Are you sure?' },
               :class => 'btn btn-danger' %>
 </div>
