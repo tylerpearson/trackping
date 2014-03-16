@@ -1,4 +1,13 @@
+<div class="home">
 
-<% unless user_signed_in? %>
-  <%= link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter) %>
-<% end %>
+    <h3>Track follows and unfollows <br>for accounts on Twitter</h3>
+
+    <%= image_tag "screenshot.jpg", alt: "feed screenshot" %>
+
+
+    <% unless user_signed_in? %>
+        <%= link_to "Get started with Twitter", user_omniauth_authorize_path(:twitter), class: "btn btn-outline" %>
+    <% end %>
+
+
+</div>
