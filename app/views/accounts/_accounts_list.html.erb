@@ -1,0 +1,19 @@
+<% if accounts.length > 0 %>
+    <h4><%= title %></h4>
+    <ul class="accounts-list">
+    <% accounts.each do |account_id|  %>
+        <li>
+            <% if !account_info(account_id).nil? %>
+            <img src="<%= account_info(account_id).avatar_url %>"
+                class="avatar"
+                width="20"
+                height="20"
+                alt="<%= account_info(account_id).username %>">
+                <%= link_to account_info(account_id).username, "http://twitter.com/#{account_info(account_id).username}", target: "_blank" %>
+            <% else %>
+                <%= account_id %> (deleted)
+            <% end %>
+        </li>
+    <% end %>
+    </ul>
+<% end %>

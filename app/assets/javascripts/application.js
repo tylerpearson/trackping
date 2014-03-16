@@ -15,7 +15,7 @@
 // require_tree .
 
 (function() {
-    $('.alert').delay(3000).fadeOut();
 
+    $('.alert').delay(3000).fadeOut();
 
 }());
