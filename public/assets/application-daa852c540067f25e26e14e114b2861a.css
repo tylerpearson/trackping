@@ -425,6 +425,15 @@ hr {
   margin-bottom: 30px;
   border-radius: 3px;
 }
+#error_explanation {
+  color: #f1f32a;
+}
+#error_explanation h4 {
+  margin: 0;
+}
+#error_explanation ul {
+  margin: 3px 0 30px 0;
+}
 .close {
   color: #fff;
   background-color: transparent;
