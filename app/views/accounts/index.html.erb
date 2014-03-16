@@ -4,10 +4,10 @@
 
 
 <% @accounts.each do |account| %>
-    <div class="media">
+    <div class="media media-half">
         <a href="<%= account_path(account) %>">
             <div class="media-image">
-                <img class="avatar" src="<%= account.profile.avatar_url %>" alt="me" width="48" height="48">
+                <img class="avatar" src="<%= account.profile.avatar_url %>" alt="<%= account.profile.name %> avatar" width="48" height="48">
             </div>
 
             <div class="media-content">

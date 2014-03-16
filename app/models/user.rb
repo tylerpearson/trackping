@@ -91,9 +91,7 @@ class User < ActiveRecord::Base
   end
 
   def recent_changed_checks
-    checks.where("followers_added != ? OR followers_removed != ? OR following_added != ? OR following_removed != ?", "[]", "[]", "[]", "[]").limit(20).order(created_at: :desc)
+    checks.where("followers_added != ? OR followers_removed != ? OR following_added != ? OR following_removed != ?", "--- []\n", "--- []\n", "--- []\n", "--- []\n").limit(20).order(created_at: :desc)
   end
-
-
 
 end
