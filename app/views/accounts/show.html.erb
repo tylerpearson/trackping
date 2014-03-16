@@ -1,3 +1,5 @@
+<% provide(:title, "Tracking #{@account.profile.name}" ) %>
+
 <div class="page-header">
     <img class="avatar media-image" src="<%= @account.profile.avatar_url %>" width="60" height="60">
     <h1><%= @account.profile.name %> (@<%= @account %>)</h1>
@@ -86,6 +88,10 @@
 
     </div>
 <% end %>
+
+<div class="pagination">
+    <%= will_paginate @checks, :page_links => false %>
+</div>
 
 <hr>
 

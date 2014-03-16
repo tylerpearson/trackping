@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= content_for?(:title) ? yield(:title) : "heck.io" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "trackping" %></title>
     <%= csrf_meta_tags %>
 
     <!--[if lt IE 9]>
@@ -19,7 +19,7 @@
       <div class="container">
 
           <header class="header">
-              <%= link_to "heck.io", root_path, class: "brand" %>
+              <%= link_to "trackping", root_path, class: "brand" %>
 
               <ul class="nav">
                 <% unless user_signed_in? %>

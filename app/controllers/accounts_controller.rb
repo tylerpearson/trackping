@@ -13,7 +13,7 @@ class AccountsController < ApplicationController
   # GET /accounts/1
   # GET /accounts/1.json
   def show
-    @checks = @account.recent_changed_checks
+    @checks = @account.recent_changed_checks.page(params[:page])
   end
 
   # GET /accounts/new
