@@ -31,7 +31,7 @@ namespace :check do
 
         accounts_info.each do |account|
           Profile.where({
-            twitter_id: account.id.to_s,
+            twitter_id: account.id,
             username: account.screen_name,
             description: account.description,
             avatar_url: account.profile_image_url.to_s,
