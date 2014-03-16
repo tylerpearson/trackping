@@ -7,7 +7,8 @@
 #  created_at :datetime
 #  updated_at :datetime
 #  user_id    :integer
-#  twitter_id :string(255)
+#  twitter_id :integer
+#  slug       :string(255)
 #
 
 require 'spec_helper'

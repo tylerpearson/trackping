@@ -7,7 +7,8 @@
 #  created_at :datetime
 #  updated_at :datetime
 #  user_id    :integer
-#  twitter_id :string(255)
+#  twitter_id :integer
+#  slug       :string(255)
 #
 
 class Account < ActiveRecord::Base
@@ -83,7 +84,7 @@ class Account < ActiveRecord::Base
       account = client.users(username).first
 
       Profile.where({
-        twitter_id: account.id.to_s,
+        twitter_id: account.id,
         username: account.screen_name,
         description: account.description,
         avatar_url: account.profile_image_url.to_s,
