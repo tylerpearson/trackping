@@ -62,9 +62,9 @@ class Account < ActiveRecord::Base
       ids = client.follower_ids(username)
     end
     begin
-      ids
+      ids.to_a
     rescue Twitter::Error::TooManyRequests => error
-      ids
+      ids.to_a
     end
   end
 
