@@ -62,11 +62,10 @@ class Account < ActiveRecord::Base
       ids = client.follower_ids(username)
     end
     begin
-      ids.to_a
+      ids
     rescue Twitter::Error::TooManyRequests => error
-      return ids.to_a
+      ids
     end
-    ids
   end
 
   def recent_changed_checks
